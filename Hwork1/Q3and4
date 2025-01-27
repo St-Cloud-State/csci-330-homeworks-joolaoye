@@ -1,0 +1,53 @@
+Script started on 2025-01-27 06:55:12+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="128" LINES="13"]
+[0;32m@joolaoye [0m➜ [1;34m/workspaces/csci-330-homeworks-joolaoye [0;36m([1;31mmain[0;36m) [0m$ sbcl
+This is SBCL 1.4.3, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+* (caddr '(a b x d))
+
+X
+* (car (car (cdr (car (cdr '(a (b (x d)))))))))
+
+X
+* 
+debugger invoked on a SB-INT:SIMPLE-READER-ERROR in thread
+#<THREAD "main thread" RUNNING {9461061}>:
+  unmatched close parenthesis
+
+    Stream: #<SYNONYM-STREAM :SYMBOL SB-SYS:*STDIN* {91051F1}>
+
+Type HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.
+
+restarts (invokable by number or by possibly-abbreviated name):
+  0: [ABORT] Exit debugger, returning to top level.
+
+(SB-IMPL::READ-RIGHT-PAREN #<SYNONYM-STREAM :SYMBOL SB-SYS:*STDIN* {91051F1}> #<unused argument>)
+0] (car (car (cdr (car (cdr '(a (b (x d)))))))))
+
+X
+0] (car (car (cdr (car (cdr '(((a (b (x) d))))))))) 
+
+NIL
+0] (car (car (cdr (car (cdr '(((a (b (x) d)))))))))  
+
+NIL
+0] (car (car (cdr (car (cdr (car (car '(((a (b (x) d)))))))))))
+
+X
+0] (cons 'a (cons 'b (cons 'c (cons 'd '()))))
+
+(A B C D)
+0] (cons 'a (cons (cons 'b (cons (cons 'x (cons 'd '())) '())) '()))
+
+(A (B (X D)))
+0] (cons '((a (b (x) d))) '())
+
+(((A (B (X) D))))
+0] (exot  it)
+[0;32m@joolaoye [0m➜ [1;34m/workspaces/csci-330-homeworks-joolaoye [0;36m([1;31mmain[0;36m) [0m$ exit
+
+Script done on 2025-01-27 07:01:42+00:00 [COMMAND_EXIT_CODE="0"]
