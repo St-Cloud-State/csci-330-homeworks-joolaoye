@@ -1,0 +1,154 @@
+Script started on 2025-03-19 05:29:02+00:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="262" LINES="13"]
+[0;32m@joolaoye [0m➜ [1;34m/workspaces/csci-330-homeworks-joolaoye/Hwork5 [0;36m([1;31mmain[0;36m) [0m$ sbcl
+This is SBCL 1.4.3, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+* (load "parser.lisp")
+
+; file: /workspaces/csci-330-homeworks-joolaoye/Hwork5/parser.lisp
+; in: DEFUN I
+;     (I_PRIME RESULT)
+; 
+; caught STYLE-WARNING:
+;   undefined function: I_PRIME
+; 
+; compilation unit finished
+;   Undefined function:
+;     I_PRIME
+;   caught 1 STYLE-WARNING condition
+
+; file: /workspaces/csci-330-homeworks-joolaoye/Hwork5/parser.lisp
+; in: DEFUN I_PRIME
+;     (LET ((STATE CUR))
+;       (LET ((RESULT (TERMINAL 'E CUR)))
+;         (IF RESULT
+;             (S_FUN RESULT)
+;             NIL)))
+; 
+; caught STYLE-WARNING:
+;   The variable STATE is defined but never used.
+; 
+; compilation unit finished
+;   caught 1 STYLE-WARNING condition
+
+T
+* (parse (list 'i ; 'x 'o 'y 's))
+Current state: (X O Y S)
+Current state: (O Y S)
+Current state: (Y S)
+Current state: (S)
+Current state: NIL
+NIL
+* (parse (list 'ix    'x 'o 'y 'o 'w 'd 's 's 'b 'e 's))
+Current state: (X O Y O W D S S B E S)
+Current state: (O Y O W D S S B E S)
+Current state: (Y O W D S S B E S)
+Current state: (O W D S S B E S)
+Current state: (W D S S B E S)
+Current state: (D S S B E S)
+Current state: (S S B E S)
+Current state: (S B E S)
+Current state: (B E S)
+Current state: (E S)
+Current state: (S)
+Current state: NIL
+NIL
+* (parse (list 'i 'y 'o 'x 's 'e 's))
+Current state: (Y O X S E S)
+Current state: (O X S E S)
+Current state: (X S E S)
+Current state: (S E S)
+Current state: (E S)
+Current state: (S)
+Current state: NIL
+NIL
+* (parse (list 'i 'w 'd 's 'b))
+Current state: (W D S B)
+Current state: (D S B)
+Current state: (S B)
+Current state: (B)
+Current state: NIL
+NIL
+* (parse (list 'i 'z 'o 'y 'd 's 's 'b 'e 'd 's 'b))
+Current state: (Z O Y D S S B E D S B)
+Current state: (O Y D S S B E D S B)
+Current state: (Y D S S B E D S B)
+Current state: (D S S B E D S B)
+Current state: (S S B E D S B)
+Current state: (S B E D S B)
+Current state: (B E D S B)
+Current state: (E D S B)
+Current state: (D S B)
+Current state: (S B)
+Current state: (B)
+Current state: NIL
+NIL
+* (parse (list 'i 'y 'o 'w 'o 'x 'o 'x z 's))
+Current state: (Y O W O X O Z S)
+Current state: (O W O X O Z S)
+Current state: (W O X O Z S)
+Current state: (O X O Z S)
+Current state: (X O Z S)
+Current state: (O Z S)
+Current state: (Z S)
+Current state: (S)
+Current state: NIL
+NIL
+* (parse (; list 'i 'x 'd 's 's 'b 'e 's))
+Current state: (X D S S B E S)
+Current state: (D S S B E S)
+Current state: (S S B E S)
+Current state: (S B E S)
+Current state: (B E S)
+Current state: (E S)
+Current state: (S)
+Current state: NIL
+NIL
+* (parse (list 'i x 'x 'o 'o 'y 's))
+Current state: (X O O Y S)
+Current state: (O O Y S)
+Current state: (O Y S)
+NIL
+* (parse (list 'i 'x 'o 'o 'y 'o 'w 'd 's 's 'b 'e 's))
+Current state: (X O O Y O W D S S B E S)
+Current state: (O O Y O W D S S B E S)
+Current state: (O Y O W D S S B E S)
+NIL
+* (parse (list 'i 'y 'o 'x 's 's 'b 'e 's))
+Current state: (Y O X S S B E S)
+Current state: (O X S S B E S)
+Current state: (X S S B E S)
+Current state: (S S B E S)
+Current state: (S B E S)
+NIL
+* (parse (list 'i 'w 'x 'd 's 'b))
+Current state: (W X D S B)
+Current state: (X D S B)
+NIL
+* (parse (list 'i 'z 'o 'y 'x 'd 'd   s 's 'b 'e 'd 's 'b 'b))
+Current state: (Z O Y X D S S B E D S B B)
+Current state: (O Y X D S S B E D S B B)
+Current state: (Y X D S S B E D S B B)
+Current state: (X D S S B E D S B B)
+NIL
+* (parse list      (list 'i 'y 'y 'y 'o 'w 'o 'x 'o 'z 's))
+Current state: (Y Y Y O W O X O Z S)
+Current state: (Y Y O W O X O Z S)
+NIL
+* (parse (list 'i 'x 'd 's 's 'b 'e))
+Current state: (X D S S B E)
+Current state: (D S S B E)
+Current state: (S S B E)
+Current state: (S B E)
+Current state: (B E)
+Current state: (E)
+Current state: NIL
+NIL
+* (ei xit)
+[0;32m@joolaoye [0m➜ [1;34m/workspaces/csci-330-homeworks-joolaoye/Hwork5 [0;36m([1;31mmain[0;36m) [0m$ exit
+
+Script done on 2025-03-19 05:36:06+00:00 [COMMAND_EXIT_CODE="0"]
